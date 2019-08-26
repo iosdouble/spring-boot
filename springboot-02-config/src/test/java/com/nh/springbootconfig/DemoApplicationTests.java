@@ -1,5 +1,6 @@
 package com.nh.springbootconfig;
 
+import com.nh.springbootconfig.bean.Nihui;
 import com.nh.springbootconfig.bean.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,10 +14,12 @@ public class DemoApplicationTests {
 
     @Autowired
     private Person person;
+    @Autowired
+    private Nihui nihui;
 
     @Test
     public void contextLoads() {
-        System.out.println(person);
+        System.out.println(nihui);
     }
 
 }
