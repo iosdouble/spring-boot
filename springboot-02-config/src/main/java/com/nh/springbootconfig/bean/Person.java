@@ -3,7 +3,10 @@ package com.nh.springbootconfig.bean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +19,11 @@ import java.util.Map;
  */
 @Component
 @ConfigurationProperties(prefix = "person")
+@Validated
 public class Person {
+    @Email
     private String lastName;
+    @NotEmpty
     private Integer age;
     private boolean boss;
     private Date date;
