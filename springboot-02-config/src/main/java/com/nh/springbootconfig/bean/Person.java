@@ -2,6 +2,7 @@ package com.nh.springbootconfig.bean;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
@@ -18,12 +19,13 @@ import java.util.Map;
  * @Created by nihui
  */
 @Component
+//@PropertySource(value = "classpath:person.properties")
 @ConfigurationProperties(prefix = "person")
-@Validated
+//@Validated
 public class Person {
-    @Email
+//    @Email
     private String lastName;
-    @NotEmpty
+//    @NotEmpty
     private Integer age;
     private boolean boss;
     private Date date;
