@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nh.restful.dao.UserMapper">
+
+    <select id="getAllUser" resultType="com.nh.restful.bean.User">
+        select  * from user;
+    </select>
+
+    <select id="getUser" parameterType="Integer" resultType="com.nh.restful.bean.User">
+        select * from user where id = #{id}
+    </select>
+
+    <insert id="addUser" parameterType="com.nh.restful.bean.User">
+        insert into user ( `id`, `name`, `password`) values ( #{id}, #{name}, #{password});
+    </insert>
+
+    <delete id="deleteUser" parameterType="Integer">
+        delete from user where id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="com.nh.restful.bean.User">
+        update user set `id`= #{id}, `name`= #{name}, `password`= #{password} where `id` = #{id};
+    </update>
+
+</mapper>
