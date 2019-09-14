@@ -15,6 +15,14 @@
             <arg column="password" javaType="String"/>
         </constructor>
     </resultMap>
+
+    <resultMap id="testAssociation" type="Person">
+        <association property="dog" column="dog" javaType="com.nh.mybatis.bean.Dog">
+            <id property="id" column="id"/>
+            <result property="dname" column="dname"/>
+        </association>
+    </resultMap>
+
     <sql id="userTableColumns">id,name,password</sql>
 
     <!--<select id="selectPerson" parameterType="int" resultType="selectPersonResultMapper">-->

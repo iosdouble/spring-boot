@@ -22,6 +22,19 @@
             <result property="dname" column="dname"/>
         </association>
     </resultMap>
+
+    <resultMap id="dogResult" type="Dog">
+        <association property="dog" column="dog_id" javaType="com.nh.mybatis.bean.Dog" select="selectDog"/>
+    </resultMap>
+
+    <select id="selectPerson" parameterType="Integer" resultMap="dogResult">
+        SELECT * from Person where user_id = #{id}
+    </select>
+
+    <select id="selectDog" parameterType="Integer" resultType="Dog">
+        select * from Dog where #{id}
+    </select>
+
     <sql id="userTableColumns">id,name,password</sql>
 
     <!--<select id="selectPerson" parameterType="int" resultType="selectPersonResultMapper">-->
