@@ -1,0 +1,29 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.nh.memcache.config.XMemcachedProperties",
+      "name": "memcached",
+      "type": "com.nh.memcache.config.XMemcachedProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.nh.memcache.config.XMemcachedProperties",
+      "defaultValue": 0,
+      "name": "memcached.op-timeout",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.nh.memcache.config.XMemcachedProperties",
+      "defaultValue": 0,
+      "name": "memcached.pool-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.nh.memcache.config.XMemcachedProperties",
+      "name": "memcached.servers",
+      "type": "java.lang.String"
+    }
+  ]
+}

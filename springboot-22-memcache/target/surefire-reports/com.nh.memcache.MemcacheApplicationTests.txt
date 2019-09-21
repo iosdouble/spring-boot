@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.nh.memcache.MemcacheApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.371 s <<< FAILURE! - in com.nh.memcache.MemcacheApplicationTests
+contextLoads(com.nh.memcache.MemcacheApplicationTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'getMemcachedClinet' defined in class path resource [com/nh/memcache/config/MemcachedBuilder.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.rubyeye.xmemcached.MemcachedClient]: Factory method 'getMemcachedClinet' threw exception; nested exception is java.lang.IllegalArgumentException: Invalid opTimeout value:0
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.rubyeye.xmemcached.MemcachedClient]: Factory method 'getMemcachedClinet' threw exception; nested exception is java.lang.IllegalArgumentException: Invalid opTimeout value:0
+Caused by: java.lang.IllegalArgumentException: Invalid opTimeout value:0
+
