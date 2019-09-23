@@ -1,12 +1,14 @@
 package com.nh.redis.bean;
 
+import java.io.Serializable;
+
 /**
  * @Classname User
  * @Description TODO
  * @Date 2019/9/22 6:30 PM
  * @Created by nihui
  */
-public class User {
+public class User implements Serializable {
     private String username;
     private Integer age;
     private String email;

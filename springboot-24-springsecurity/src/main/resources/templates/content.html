@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>内容1</title>
+</head>
+<body>
+<h1>只有登陆之后的用户才会看到！</h1>
+<a th:href="@{/admin}">进入管理员页面</a>
+<form method="post" action="/logout">
+    <button type="submit">退出</button>
+</form>
+</body>
+</html>
