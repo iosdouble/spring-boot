@@ -1,5 +1,6 @@
 server.port=8080
 
+spring.profiles.active=dev
 #person.last-name=nihui
 #person.age=24
 #person.boss=false
