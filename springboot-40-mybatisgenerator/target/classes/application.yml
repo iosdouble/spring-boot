@@ -1,0 +1,15 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://10.115.254.14:3306/haiyan_statistic?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+    username: root
+    password: redhat
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+#  #  type-handlers-package: com.ybejia.house.inhouse.infrastructure.orm.mapper.handler
+#  #  configuration:
+#  #    map-underscore-to-camel-case: true
+  mtype-aliases-package: com.gome.statistic.infrastructure.mysql.entity
+  mapper-locations: class*:com/gome/statistic/infrastructure/mysql/mapper/*Mapper.xml
+
+debug: true
