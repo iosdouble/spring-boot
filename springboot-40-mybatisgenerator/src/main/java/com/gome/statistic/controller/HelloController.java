@@ -4,6 +4,8 @@ import com.gome.statistic.infrastructure.mysql.entity.HaiyanAppEntity;
 import com.gome.statistic.infrastructure.mysql.mapper.HaiyanAppEntityMapper;
 import org.mybatis.dynamic.sql.render.RenderingStrategy;
 import org.mybatis.dynamic.sql.select.render.SelectStatementProvider;
+import org.mybatis.dynamic.sql.update.UpdateDSL;
+import org.mybatis.dynamic.sql.update.render.UpdateStatementProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +37,5 @@ public class HelloController {
 
         return haiyanAppEntityMapper.selectOne(selectStatement);
     }
-
 
 }

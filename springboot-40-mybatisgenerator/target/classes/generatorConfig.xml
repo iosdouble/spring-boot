@@ -83,7 +83,52 @@
                <!--selectByExampleQueryId="true">-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         <!--</table>-->
-        <table tableName="haiyan_app" domainObjectName="HaiyanAppEntity"
+        <!--<table tableName="haiyan_app" domainObjectName="HaiyanAppEntity"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
+        <!--</table>-->
+
+        <!--<table tableName="haiyan_rac_base" domainObjectName="HaiyanRacBaseEntity"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
+        <!--</table>-->
+        <!--<table tableName="haiyan_rac_change" domainObjectName="HaiyanRacChangeEntity"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
+        <!--</table>-->
+        <!--<table tableName="haiyan_rac_detail" domainObjectName="HaiyanRacDetailEntity"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
+        <!--</table>-->
+
+
+        <table tableName="haiyan_rac_change_flow_detail" domainObjectName="HaiyanRacChangeFlowDetail"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <table tableName="haiyan_rac_change_plan_detail" domainObjectName="HaiyanRacChangePlanDetail"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <table tableName="haiyan_rac_report_to_filepath" domainObjectName="HaiyanRacReportToFilepath"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <table tableName="haiyan_rac_reporter_detail" domainObjectName="HaiyanRacReportDetail"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
