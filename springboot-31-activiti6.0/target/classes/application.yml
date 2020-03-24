@@ -19,4 +19,4 @@ spring:
 #      - **.bpmn
 #      - **.bpmn20.xml
     history-level: full
-debug: true
+#debug: true
