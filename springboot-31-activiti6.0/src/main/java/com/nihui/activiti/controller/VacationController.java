@@ -3,6 +3,7 @@ package com.nihui.activiti.controller;
 import com.nihui.activiti.entity.VacTask;
 import com.nihui.activiti.entity.Vacation;
 import com.nihui.activiti.service.VacationService;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpSession;
  * @Date 2020/3/23 2:14 PM
  * @Created by nihui
  */
+
+@Api(value = "获取流程操作" ,description = "流程相关的操作",position = 100,protocols = "http")
 @RestController
 public class VacationController {
     @Resource
