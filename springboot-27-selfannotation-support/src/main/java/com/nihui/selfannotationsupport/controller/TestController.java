@@ -1,6 +1,7 @@
 package com.nihui.selfannotationsupport.controller;
 
-import com.nihui.selfannotationsupport.bean.User;
+import com.nihui.selfannotationsupport.bean.Test;
+import com.nh.bean.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,9 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @Autowired
-    private User user;
+    private Test user;
+
+    @Autowired
+    private Log log;
+
     @GetMapping("/hello")
-    public User getUser(){
+    public Test getUser(){
         return user;
+    }
+
+    @GetMapping("/log")
+    public Log getLog(){
+        return log;
     }
 }

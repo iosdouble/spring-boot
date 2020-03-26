@@ -20,3 +20,5 @@ spring:
 #      - **.bpmn20.xml
     history-level: full
 #debug: true
+mybatis:
+  mapperLocations: classpath:mapper/*.xml

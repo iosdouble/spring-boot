@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nh.workflow.workflowsupport.dao.mapper.TaskServiceMapper">
+  <resultMap id="BaseResultMap" type="com.nh.workflow.workflowsupport.dao.bean.TaskService">
+    <constructor>
+      <arg column="task_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="task_step" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="task_create_time" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="task_update_time" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="task_finish_time" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="task_event_flag" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="task_operate_mark" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.nh.workflow.workflowsupport.dao.bean.TaskService">
+    <constructor>
+      <arg column="task_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="task_step" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="task_create_time" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="task_update_time" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="task_finish_time" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="task_event_flag" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="task_operate_mark" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="task_detail" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    task_id, task_step, task_create_time, task_update_time, task_finish_time, task_event_flag, 
+    task_operate_mark, user_id
+  </sql>
+  <sql id="Blob_Column_List">
+    task_detail
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.nh.workflow.workflowsupport.dao.bean.TaskServiceExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from task_service_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.nh.workflow.workflowsupport.dao.bean.TaskServiceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from task_service_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.nh.workflow.workflowsupport.dao.bean.TaskService">
+    insert into task_service_table (task_id, task_step, task_create_time, 
+      task_update_time, task_finish_time, task_event_flag, 
+      task_operate_mark, user_id, task_detail
+      )
+    values (#{taskId,jdbcType=INTEGER}, #{taskStep,jdbcType=INTEGER}, #{taskCreateTime,jdbcType=DATE}, 
+      #{taskUpdateTime,jdbcType=DATE}, #{taskFinishTime,jdbcType=DATE}, #{taskEventFlag,jdbcType=INTEGER}, 
+      #{taskOperateMark,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{taskDetail,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.nh.workflow.workflowsupport.dao.bean.TaskService">
+    insert into task_service_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="taskStep != null">
+        task_step,
+      </if>
+      <if test="taskCreateTime != null">
+        task_create_time,
+      </if>
+      <if test="taskUpdateTime != null">
+        task_update_time,
+      </if>
+      <if test="taskFinishTime != null">
+        task_finish_time,
+      </if>
+      <if test="taskEventFlag != null">
+        task_event_flag,
+      </if>
+      <if test="taskOperateMark != null">
+        task_operate_mark,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="taskDetail != null">
+        task_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="taskStep != null">
+        #{taskStep,jdbcType=INTEGER},
+      </if>
+      <if test="taskCreateTime != null">
+        #{taskCreateTime,jdbcType=DATE},
+      </if>
+      <if test="taskUpdateTime != null">
+        #{taskUpdateTime,jdbcType=DATE},
+      </if>
+      <if test="taskFinishTime != null">
+        #{taskFinishTime,jdbcType=DATE},
+      </if>
+      <if test="taskEventFlag != null">
+        #{taskEventFlag,jdbcType=INTEGER},
+      </if>
+      <if test="taskOperateMark != null">
+        #{taskOperateMark,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="taskDetail != null">
+        #{taskDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nh.workflow.workflowsupport.dao.bean.TaskServiceExample" resultType="java.lang.Long">
+    select count(*) from task_service_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update task_service_table
+    <set>
+      <if test="record.taskId != null">
+        task_id = #{record.taskId,jdbcType=INTEGER},
+      </if>
+      <if test="record.taskStep != null">
+        task_step = #{record.taskStep,jdbcType=INTEGER},
+      </if>
+      <if test="record.taskCreateTime != null">
+        task_create_time = #{record.taskCreateTime,jdbcType=DATE},
+      </if>
+      <if test="record.taskUpdateTime != null">
+        task_update_time = #{record.taskUpdateTime,jdbcType=DATE},
+      </if>
+      <if test="record.taskFinishTime != null">
+        task_finish_time = #{record.taskFinishTime,jdbcType=DATE},
+      </if>
+      <if test="record.taskEventFlag != null">
+        task_event_flag = #{record.taskEventFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.taskOperateMark != null">
+        task_operate_mark = #{record.taskOperateMark,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.taskDetail != null">
+        task_detail = #{record.taskDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update task_service_table
+    set task_id = #{record.taskId,jdbcType=INTEGER},
+      task_step = #{record.taskStep,jdbcType=INTEGER},
+      task_create_time = #{record.taskCreateTime,jdbcType=DATE},
+      task_update_time = #{record.taskUpdateTime,jdbcType=DATE},
+      task_finish_time = #{record.taskFinishTime,jdbcType=DATE},
+      task_event_flag = #{record.taskEventFlag,jdbcType=INTEGER},
+      task_operate_mark = #{record.taskOperateMark,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      task_detail = #{record.taskDetail,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update task_service_table
+    set task_id = #{record.taskId,jdbcType=INTEGER},
+      task_step = #{record.taskStep,jdbcType=INTEGER},
+      task_create_time = #{record.taskCreateTime,jdbcType=DATE},
+      task_update_time = #{record.taskUpdateTime,jdbcType=DATE},
+      task_finish_time = #{record.taskFinishTime,jdbcType=DATE},
+      task_event_flag = #{record.taskEventFlag,jdbcType=INTEGER},
+      task_operate_mark = #{record.taskOperateMark,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
