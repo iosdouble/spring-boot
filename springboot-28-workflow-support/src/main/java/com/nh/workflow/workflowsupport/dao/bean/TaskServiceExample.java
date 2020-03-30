@@ -132,6 +132,66 @@ public class TaskServiceExample {
             addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdEqualTo(Long value) {
+            addCriterion("id =", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotEqualTo(Long value) {
+            addCriterion("id <>", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdGreaterThan(Long value) {
+            addCriterion("id >", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("id >=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLessThan(Long value) {
+            addCriterion("id <", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLessThanOrEqualTo(Long value) {
+            addCriterion("id <=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIn(List<Long> values) {
+            addCriterion("id in", values, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotIn(List<Long> values) {
+            addCriterion("id not in", values, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdBetween(Long value1, Long value2) {
+            addCriterion("id between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotBetween(Long value1, Long value2) {
+            addCriterion("id not between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
         public Criteria andTaskIdIsNull() {
             addCriterion("task_id is null");
             return (Criteria) this;
@@ -142,113 +202,173 @@ public class TaskServiceExample {
             return (Criteria) this;
         }
 
-        public Criteria andTaskIdEqualTo(Integer value) {
+        public Criteria andTaskIdEqualTo(Long value) {
             addCriterion("task_id =", value, "taskId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskIdNotEqualTo(Integer value) {
+        public Criteria andTaskIdNotEqualTo(Long value) {
             addCriterion("task_id <>", value, "taskId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskIdGreaterThan(Integer value) {
+        public Criteria andTaskIdGreaterThan(Long value) {
             addCriterion("task_id >", value, "taskId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTaskIdGreaterThanOrEqualTo(Long value) {
             addCriterion("task_id >=", value, "taskId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskIdLessThan(Integer value) {
+        public Criteria andTaskIdLessThan(Long value) {
             addCriterion("task_id <", value, "taskId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskIdLessThanOrEqualTo(Integer value) {
+        public Criteria andTaskIdLessThanOrEqualTo(Long value) {
             addCriterion("task_id <=", value, "taskId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskIdIn(List<Integer> values) {
+        public Criteria andTaskIdIn(List<Long> values) {
             addCriterion("task_id in", values, "taskId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskIdNotIn(List<Integer> values) {
+        public Criteria andTaskIdNotIn(List<Long> values) {
             addCriterion("task_id not in", values, "taskId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskIdBetween(Integer value1, Integer value2) {
+        public Criteria andTaskIdBetween(Long value1, Long value2) {
             addCriterion("task_id between", value1, value2, "taskId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andTaskIdNotBetween(Long value1, Long value2) {
             addCriterion("task_id not between", value1, value2, "taskId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepIsNull() {
-            addCriterion("task_step is null");
+        public Criteria andUserIdIsNull() {
+            addCriterion("user_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepIsNotNull() {
-            addCriterion("task_step is not null");
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("user_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepEqualTo(Integer value) {
-            addCriterion("task_step =", value, "taskStep");
+        public Criteria andUserIdEqualTo(Long value) {
+            addCriterion("user_id =", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepNotEqualTo(Integer value) {
-            addCriterion("task_step <>", value, "taskStep");
+        public Criteria andUserIdNotEqualTo(Long value) {
+            addCriterion("user_id <>", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepGreaterThan(Integer value) {
-            addCriterion("task_step >", value, "taskStep");
+        public Criteria andUserIdGreaterThan(Long value) {
+            addCriterion("user_id >", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepGreaterThanOrEqualTo(Integer value) {
-            addCriterion("task_step >=", value, "taskStep");
+        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("user_id >=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepLessThan(Integer value) {
-            addCriterion("task_step <", value, "taskStep");
+        public Criteria andUserIdLessThan(Long value) {
+            addCriterion("user_id <", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepLessThanOrEqualTo(Integer value) {
-            addCriterion("task_step <=", value, "taskStep");
+        public Criteria andUserIdLessThanOrEqualTo(Long value) {
+            addCriterion("user_id <=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepIn(List<Integer> values) {
-            addCriterion("task_step in", values, "taskStep");
+        public Criteria andUserIdIn(List<Long> values) {
+            addCriterion("user_id in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepNotIn(List<Integer> values) {
-            addCriterion("task_step not in", values, "taskStep");
+        public Criteria andUserIdNotIn(List<Long> values) {
+            addCriterion("user_id not in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepBetween(Integer value1, Integer value2) {
-            addCriterion("task_step between", value1, value2, "taskStep");
+        public Criteria andUserIdBetween(Long value1, Long value2) {
+            addCriterion("user_id between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskStepNotBetween(Integer value1, Integer value2) {
-            addCriterion("task_step not between", value1, value2, "taskStep");
+        public Criteria andUserIdNotBetween(Long value1, Long value2) {
+            addCriterion("user_id not between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepIsNull() {
+            addCriterion("task_all_step is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepIsNotNull() {
+            addCriterion("task_all_step is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepEqualTo(Integer value) {
+            addCriterion("task_all_step =", value, "taskAllStep");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepNotEqualTo(Integer value) {
+            addCriterion("task_all_step <>", value, "taskAllStep");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepGreaterThan(Integer value) {
+            addCriterion("task_all_step >", value, "taskAllStep");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepGreaterThanOrEqualTo(Integer value) {
+            addCriterion("task_all_step >=", value, "taskAllStep");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepLessThan(Integer value) {
+            addCriterion("task_all_step <", value, "taskAllStep");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepLessThanOrEqualTo(Integer value) {
+            addCriterion("task_all_step <=", value, "taskAllStep");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepIn(List<Integer> values) {
+            addCriterion("task_all_step in", values, "taskAllStep");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepNotIn(List<Integer> values) {
+            addCriterion("task_all_step not in", values, "taskAllStep");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepBetween(Integer value1, Integer value2) {
+            addCriterion("task_all_step between", value1, value2, "taskAllStep");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskAllStepNotBetween(Integer value1, Integer value2) {
+            addCriterion("task_all_step not between", value1, value2, "taskAllStep");
             return (Criteria) this;
         }
 
@@ -432,183 +552,123 @@ public class TaskServiceExample {
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagIsNull() {
-            addCriterion("task_event_flag is null");
+        public Criteria andTaskEventIdIsNull() {
+            addCriterion("task_event_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagIsNotNull() {
-            addCriterion("task_event_flag is not null");
+        public Criteria andTaskEventIdIsNotNull() {
+            addCriterion("task_event_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagEqualTo(Integer value) {
-            addCriterion("task_event_flag =", value, "taskEventFlag");
+        public Criteria andTaskEventIdEqualTo(Integer value) {
+            addCriterion("task_event_id =", value, "taskEventId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagNotEqualTo(Integer value) {
-            addCriterion("task_event_flag <>", value, "taskEventFlag");
+        public Criteria andTaskEventIdNotEqualTo(Integer value) {
+            addCriterion("task_event_id <>", value, "taskEventId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagGreaterThan(Integer value) {
-            addCriterion("task_event_flag >", value, "taskEventFlag");
+        public Criteria andTaskEventIdGreaterThan(Integer value) {
+            addCriterion("task_event_id >", value, "taskEventId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagGreaterThanOrEqualTo(Integer value) {
-            addCriterion("task_event_flag >=", value, "taskEventFlag");
+        public Criteria andTaskEventIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("task_event_id >=", value, "taskEventId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagLessThan(Integer value) {
-            addCriterion("task_event_flag <", value, "taskEventFlag");
+        public Criteria andTaskEventIdLessThan(Integer value) {
+            addCriterion("task_event_id <", value, "taskEventId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagLessThanOrEqualTo(Integer value) {
-            addCriterion("task_event_flag <=", value, "taskEventFlag");
+        public Criteria andTaskEventIdLessThanOrEqualTo(Integer value) {
+            addCriterion("task_event_id <=", value, "taskEventId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagIn(List<Integer> values) {
-            addCriterion("task_event_flag in", values, "taskEventFlag");
+        public Criteria andTaskEventIdIn(List<Integer> values) {
+            addCriterion("task_event_id in", values, "taskEventId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagNotIn(List<Integer> values) {
-            addCriterion("task_event_flag not in", values, "taskEventFlag");
+        public Criteria andTaskEventIdNotIn(List<Integer> values) {
+            addCriterion("task_event_id not in", values, "taskEventId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagBetween(Integer value1, Integer value2) {
-            addCriterion("task_event_flag between", value1, value2, "taskEventFlag");
+        public Criteria andTaskEventIdBetween(Integer value1, Integer value2) {
+            addCriterion("task_event_id between", value1, value2, "taskEventId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskEventFlagNotBetween(Integer value1, Integer value2) {
-            addCriterion("task_event_flag not between", value1, value2, "taskEventFlag");
+        public Criteria andTaskEventIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("task_event_id not between", value1, value2, "taskEventId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkIsNull() {
-            addCriterion("task_operate_mark is null");
+        public Criteria andTaskOperateFlowIdIsNull() {
+            addCriterion("task_operate_flow_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkIsNotNull() {
-            addCriterion("task_operate_mark is not null");
+        public Criteria andTaskOperateFlowIdIsNotNull() {
+            addCriterion("task_operate_flow_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkEqualTo(Integer value) {
-            addCriterion("task_operate_mark =", value, "taskOperateMark");
+        public Criteria andTaskOperateFlowIdEqualTo(Integer value) {
+            addCriterion("task_operate_flow_id =", value, "taskOperateFlowId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkNotEqualTo(Integer value) {
-            addCriterion("task_operate_mark <>", value, "taskOperateMark");
+        public Criteria andTaskOperateFlowIdNotEqualTo(Integer value) {
+            addCriterion("task_operate_flow_id <>", value, "taskOperateFlowId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkGreaterThan(Integer value) {
-            addCriterion("task_operate_mark >", value, "taskOperateMark");
+        public Criteria andTaskOperateFlowIdGreaterThan(Integer value) {
+            addCriterion("task_operate_flow_id >", value, "taskOperateFlowId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkGreaterThanOrEqualTo(Integer value) {
-            addCriterion("task_operate_mark >=", value, "taskOperateMark");
+        public Criteria andTaskOperateFlowIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("task_operate_flow_id >=", value, "taskOperateFlowId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkLessThan(Integer value) {
-            addCriterion("task_operate_mark <", value, "taskOperateMark");
+        public Criteria andTaskOperateFlowIdLessThan(Integer value) {
+            addCriterion("task_operate_flow_id <", value, "taskOperateFlowId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkLessThanOrEqualTo(Integer value) {
-            addCriterion("task_operate_mark <=", value, "taskOperateMark");
+        public Criteria andTaskOperateFlowIdLessThanOrEqualTo(Integer value) {
+            addCriterion("task_operate_flow_id <=", value, "taskOperateFlowId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkIn(List<Integer> values) {
-            addCriterion("task_operate_mark in", values, "taskOperateMark");
+        public Criteria andTaskOperateFlowIdIn(List<Integer> values) {
+            addCriterion("task_operate_flow_id in", values, "taskOperateFlowId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkNotIn(List<Integer> values) {
-            addCriterion("task_operate_mark not in", values, "taskOperateMark");
+        public Criteria andTaskOperateFlowIdNotIn(List<Integer> values) {
+            addCriterion("task_operate_flow_id not in", values, "taskOperateFlowId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkBetween(Integer value1, Integer value2) {
-            addCriterion("task_operate_mark between", value1, value2, "taskOperateMark");
+        public Criteria andTaskOperateFlowIdBetween(Integer value1, Integer value2) {
+            addCriterion("task_operate_flow_id between", value1, value2, "taskOperateFlowId");
             return (Criteria) this;
         }
 
-        public Criteria andTaskOperateMarkNotBetween(Integer value1, Integer value2) {
-            addCriterion("task_operate_mark not between", value1, value2, "taskOperateMark");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdIsNull() {
-            addCriterion("user_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdIsNotNull() {
-            addCriterion("user_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdEqualTo(Integer value) {
-            addCriterion("user_id =", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdNotEqualTo(Integer value) {
-            addCriterion("user_id <>", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdGreaterThan(Integer value) {
-            addCriterion("user_id >", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("user_id >=", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdLessThan(Integer value) {
-            addCriterion("user_id <", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
-            addCriterion("user_id <=", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdIn(List<Integer> values) {
-            addCriterion("user_id in", values, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdNotIn(List<Integer> values) {
-            addCriterion("user_id not in", values, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdBetween(Integer value1, Integer value2) {
-            addCriterion("user_id between", value1, value2, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("user_id not between", value1, value2, "userId");
+        public Criteria andTaskOperateFlowIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("task_operate_flow_id not between", value1, value2, "taskOperateFlowId");
             return (Criteria) this;
         }
     }

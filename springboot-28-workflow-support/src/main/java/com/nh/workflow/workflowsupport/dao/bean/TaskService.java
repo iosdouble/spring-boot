@@ -1,72 +1,75 @@
 package com.nh.workflow.workflowsupport.dao.bean;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class TaskService {
-    private Integer taskId;
+    private Long id;
 
-    private Integer taskStep;
+    private Long taskId;
 
-    @JsonFormat(pattern = "yyyy-mm-dd HH:MM:ss")
+    private Long userId;
+
+    private Integer taskAllStep;
+
     private Date taskCreateTime;
 
-    @JsonFormat(pattern = "yyyy-mm-dd HH:MM:ss")
     private Date taskUpdateTime;
 
-    @JsonFormat(pattern = "yyyy-mm-dd HH:MM:ss")
     private Date taskFinishTime;
 
-    private Integer taskEventFlag;
+    private Integer taskEventId;
 
-    private Integer taskOperateMark;
-
-    private Integer userId;
+    private Integer taskOperateFlowId;
 
     private String taskDetail;
 
-    public TaskService(Integer taskId, Integer taskStep, Date taskCreateTime, Date taskUpdateTime, Date taskFinishTime, Integer taskEventFlag, Integer taskOperateMark, Integer userId, String taskDetail) {
+    public TaskService(Long id, Long taskId, Long userId, Integer taskAllStep, Date taskCreateTime, Date taskUpdateTime, Date taskFinishTime, Integer taskEventId, Integer taskOperateFlowId, String taskDetail) {
+        this.id = id;
         this.taskId = taskId;
-        this.taskStep = taskStep;
+        this.userId = userId;
+        this.taskAllStep = taskAllStep;
         this.taskCreateTime = taskCreateTime;
         this.taskUpdateTime = taskUpdateTime;
         this.taskFinishTime = taskFinishTime;
-        this.taskEventFlag = taskEventFlag;
-        this.taskOperateMark = taskOperateMark;
-        this.userId = userId;
+        this.taskEventId = taskEventId;
+        this.taskOperateFlowId = taskOperateFlowId;
         this.taskDetail = taskDetail;
-    }
-
-    public TaskService(Integer taskId, Integer taskStep, Date taskCreateTime, Date taskUpdateTime, Date taskFinishTime, Integer taskEventFlag, Integer taskOperateMark, Integer userId) {
-        this.taskId = taskId;
-        this.taskStep = taskStep;
-        this.taskCreateTime = taskCreateTime;
-        this.taskUpdateTime = taskUpdateTime;
-        this.taskFinishTime = taskFinishTime;
-        this.taskEventFlag = taskEventFlag;
-        this.taskOperateMark = taskOperateMark;
-        this.userId = userId;
     }
 
     public TaskService() {
         super();
     }
 
-    public Integer getTaskId() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getTaskId() {
         return taskId;
     }
 
-    public void setTaskId(Integer taskId) {
+    public void setTaskId(Long taskId) {
         this.taskId = taskId;
     }
 
-    public Integer getTaskStep() {
-        return taskStep;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setTaskStep(Integer taskStep) {
-        this.taskStep = taskStep;
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Integer getTaskAllStep() {
+        return taskAllStep;
+    }
+
+    public void setTaskAllStep(Integer taskAllStep) {
+        this.taskAllStep = taskAllStep;
     }
 
     public Date getTaskCreateTime() {
@@ -93,28 +96,20 @@ public class TaskService {
         this.taskFinishTime = taskFinishTime;
     }
 
-    public Integer getTaskEventFlag() {
-        return taskEventFlag;
+    public Integer getTaskEventId() {
+        return taskEventId;
     }
 
-    public void setTaskEventFlag(Integer taskEventFlag) {
-        this.taskEventFlag = taskEventFlag;
+    public void setTaskEventId(Integer taskEventId) {
+        this.taskEventId = taskEventId;
     }
 
-    public Integer getTaskOperateMark() {
-        return taskOperateMark;
+    public Integer getTaskOperateFlowId() {
+        return taskOperateFlowId;
     }
 
-    public void setTaskOperateMark(Integer taskOperateMark) {
-        this.taskOperateMark = taskOperateMark;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setTaskOperateFlowId(Integer taskOperateFlowId) {
+        this.taskOperateFlowId = taskOperateFlowId;
     }
 
     public String getTaskDetail() {

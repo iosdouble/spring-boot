@@ -11,6 +11,8 @@ import java.util.List;
 public interface TaskServiceMapper extends Serializable {
     long countByExample(TaskServiceExample example);
 
+    int deleteByPrimaryKey(Long id);
+
     int insert(TaskService record);
 
     int insertSelective(TaskService record);
@@ -19,9 +21,17 @@ public interface TaskServiceMapper extends Serializable {
 
     List<TaskService> selectByExample(TaskServiceExample example);
 
+    TaskService selectByPrimaryKey(Long id);
+
     int updateByExampleSelective(@Param("record") TaskService record, @Param("example") TaskServiceExample example);
 
     int updateByExampleWithBLOBs(@Param("record") TaskService record, @Param("example") TaskServiceExample example);
 
     int updateByExample(@Param("record") TaskService record, @Param("example") TaskServiceExample example);
+
+    int updateByPrimaryKeySelective(TaskService record);
+
+    int updateByPrimaryKeyWithBLOBs(TaskService record);
+
+    int updateByPrimaryKey(TaskService record);
 }

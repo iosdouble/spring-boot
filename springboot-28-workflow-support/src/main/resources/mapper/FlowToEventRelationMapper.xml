@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nh.workflow.workflowsupport.dao.mapper.FlowToEventRelationMapper">
+  <resultMap id="BaseResultMap" type="com.nh.workflow.workflowsupport.dao.bean.FlowToEventRelation">
+    <constructor>
+      <idArg column="real_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="flow_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="flow_step" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="flow_step_event_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    real_id, flow_id, flow_step, flow_step_event_id
+  </sql>
+  <select id="selectByExample" parameterType="com.nh.workflow.workflowsupport.dao.bean.FlowToEventRelationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from flow_to_event_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from flow_to_event_table
+    where real_id = #{realId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from flow_to_event_table
+    where real_id = #{realId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nh.workflow.workflowsupport.dao.bean.FlowToEventRelation">
+    insert into flow_to_event_table (real_id, flow_id, flow_step, 
+      flow_step_event_id)
+    values (#{realId,jdbcType=INTEGER}, #{flowId,jdbcType=INTEGER}, #{flowStep,jdbcType=INTEGER}, 
+      #{flowStepEventId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nh.workflow.workflowsupport.dao.bean.FlowToEventRelation">
+    insert into flow_to_event_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="realId != null">
+        real_id,
+      </if>
+      <if test="flowId != null">
+        flow_id,
+      </if>
+      <if test="flowStep != null">
+        flow_step,
+      </if>
+      <if test="flowStepEventId != null">
+        flow_step_event_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="realId != null">
+        #{realId,jdbcType=INTEGER},
+      </if>
+      <if test="flowId != null">
+        #{flowId,jdbcType=INTEGER},
+      </if>
+      <if test="flowStep != null">
+        #{flowStep,jdbcType=INTEGER},
+      </if>
+      <if test="flowStepEventId != null">
+        #{flowStepEventId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nh.workflow.workflowsupport.dao.bean.FlowToEventRelationExample" resultType="java.lang.Long">
+    select count(*) from flow_to_event_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update flow_to_event_table
+    <set>
+      <if test="record.realId != null">
+        real_id = #{record.realId,jdbcType=INTEGER},
+      </if>
+      <if test="record.flowId != null">
+        flow_id = #{record.flowId,jdbcType=INTEGER},
+      </if>
+      <if test="record.flowStep != null">
+        flow_step = #{record.flowStep,jdbcType=INTEGER},
+      </if>
+      <if test="record.flowStepEventId != null">
+        flow_step_event_id = #{record.flowStepEventId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update flow_to_event_table
+    set real_id = #{record.realId,jdbcType=INTEGER},
+      flow_id = #{record.flowId,jdbcType=INTEGER},
+      flow_step = #{record.flowStep,jdbcType=INTEGER},
+      flow_step_event_id = #{record.flowStepEventId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nh.workflow.workflowsupport.dao.bean.FlowToEventRelation">
+    update flow_to_event_table
+    <set>
+      <if test="flowId != null">
+        flow_id = #{flowId,jdbcType=INTEGER},
+      </if>
+      <if test="flowStep != null">
+        flow_step = #{flowStep,jdbcType=INTEGER},
+      </if>
+      <if test="flowStepEventId != null">
+        flow_step_event_id = #{flowStepEventId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where real_id = #{realId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nh.workflow.workflowsupport.dao.bean.FlowToEventRelation">
+    update flow_to_event_table
+    set flow_id = #{flowId,jdbcType=INTEGER},
+      flow_step = #{flowStep,jdbcType=INTEGER},
+      flow_step_event_id = #{flowStepEventId,jdbcType=INTEGER}
+    where real_id = #{realId,jdbcType=INTEGER}
+  </update>
+
+  <resultMap id="FlowToEvent" type="com.nh.workflow.workflowsupport.bean.ExtFlowToEvent">
+    <constructor>
+      <arg column="flow_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="flow_step_event_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="event_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="event_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="event_describe" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="event_level" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="flow_step" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <!--新增多表查询-->
+
+  <select id="flowToEventDetail" resultMap="FlowToEvent" parameterType="java.lang.Integer">
+     select flow_id,flow_step_event_id,event_id,event_code,event_describe,event_level,flow_step
+        FROM event_service_table JOIN (select flow_id,flow_step_event_id,flow_step FROM flow_to_event_table) e WHERE event_id = e.flow_step_event_id AND e.flow_id = #{flowId} ORDER BY flow_step ASC
+  </select>
+</mapper>

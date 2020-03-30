@@ -3,26 +3,28 @@
 <mapper namespace="com.nh.workflow.workflowsupport.dao.mapper.TaskServiceMapper">
   <resultMap id="BaseResultMap" type="com.nh.workflow.workflowsupport.dao.bean.TaskService">
     <constructor>
-      <arg column="task_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="task_step" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="task_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="task_all_step" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="task_create_time" javaType="java.util.Date" jdbcType="DATE" />
       <arg column="task_update_time" javaType="java.util.Date" jdbcType="DATE" />
       <arg column="task_finish_time" javaType="java.util.Date" jdbcType="DATE" />
-      <arg column="task_event_flag" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="task_operate_mark" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="task_event_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="task_operate_flow_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.nh.workflow.workflowsupport.dao.bean.TaskService">
     <constructor>
-      <arg column="task_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="task_step" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="task_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="task_all_step" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="task_create_time" javaType="java.util.Date" jdbcType="DATE" />
       <arg column="task_update_time" javaType="java.util.Date" jdbcType="DATE" />
       <arg column="task_finish_time" javaType="java.util.Date" jdbcType="DATE" />
-      <arg column="task_event_flag" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="task_operate_mark" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="task_event_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="task_operate_flow_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="task_detail" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
     </constructor>
   </resultMap>
@@ -85,8 +87,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    task_id, task_step, task_create_time, task_update_time, task_finish_time, task_event_flag, 
-    task_operate_mark, user_id
+    id, task_id, user_id, task_all_step, task_create_time, task_update_time, task_finish_time, 
+    task_event_id, task_operate_flow_id
   </sql>
   <sql id="Blob_Column_List">
     task_detail
@@ -121,24 +123,42 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from task_service_table
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from task_service_table
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
   <insert id="insert" parameterType="com.nh.workflow.workflowsupport.dao.bean.TaskService">
-    insert into task_service_table (task_id, task_step, task_create_time, 
-      task_update_time, task_finish_time, task_event_flag, 
-      task_operate_mark, user_id, task_detail
-      )
-    values (#{taskId,jdbcType=INTEGER}, #{taskStep,jdbcType=INTEGER}, #{taskCreateTime,jdbcType=DATE}, 
-      #{taskUpdateTime,jdbcType=DATE}, #{taskFinishTime,jdbcType=DATE}, #{taskEventFlag,jdbcType=INTEGER}, 
-      #{taskOperateMark,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{taskDetail,jdbcType=LONGVARCHAR}
-      )
+    insert into task_service_table (id, task_id, user_id, 
+      task_all_step, task_create_time, task_update_time, 
+      task_finish_time, task_event_id, task_operate_flow_id, 
+      task_detail)
+    values (#{id,jdbcType=BIGINT}, #{taskId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{taskAllStep,jdbcType=INTEGER}, #{taskCreateTime,jdbcType=DATE}, #{taskUpdateTime,jdbcType=DATE}, 
+      #{taskFinishTime,jdbcType=DATE}, #{taskEventId,jdbcType=INTEGER}, #{taskOperateFlowId,jdbcType=INTEGER}, 
+      #{taskDetail,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.nh.workflow.workflowsupport.dao.bean.TaskService">
     insert into task_service_table
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
       <if test="taskId != null">
         task_id,
       </if>
-      <if test="taskStep != null">
-        task_step,
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="taskAllStep != null">
+        task_all_step,
       </if>
       <if test="taskCreateTime != null">
         task_create_time,
@@ -149,25 +169,28 @@
       <if test="taskFinishTime != null">
         task_finish_time,
       </if>
-      <if test="taskEventFlag != null">
-        task_event_flag,
+      <if test="taskEventId != null">
+        task_event_id,
       </if>
-      <if test="taskOperateMark != null">
-        task_operate_mark,
-      </if>
-      <if test="userId != null">
-        user_id,
+      <if test="taskOperateFlowId != null">
+        task_operate_flow_id,
       </if>
       <if test="taskDetail != null">
         task_detail,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="taskId != null">
-        #{taskId,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
       </if>
-      <if test="taskStep != null">
-        #{taskStep,jdbcType=INTEGER},
+      <if test="taskId != null">
+        #{taskId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="taskAllStep != null">
+        #{taskAllStep,jdbcType=INTEGER},
       </if>
       <if test="taskCreateTime != null">
         #{taskCreateTime,jdbcType=DATE},
@@ -178,14 +201,11 @@
       <if test="taskFinishTime != null">
         #{taskFinishTime,jdbcType=DATE},
       </if>
-      <if test="taskEventFlag != null">
-        #{taskEventFlag,jdbcType=INTEGER},
+      <if test="taskEventId != null">
+        #{taskEventId,jdbcType=INTEGER},
       </if>
-      <if test="taskOperateMark != null">
-        #{taskOperateMark,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+      <if test="taskOperateFlowId != null">
+        #{taskOperateFlowId,jdbcType=INTEGER},
       </if>
       <if test="taskDetail != null">
         #{taskDetail,jdbcType=LONGVARCHAR},
@@ -201,11 +221,17 @@
   <update id="updateByExampleSelective" parameterType="map">
     update task_service_table
     <set>
-      <if test="record.taskId != null">
-        task_id = #{record.taskId,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.taskStep != null">
-        task_step = #{record.taskStep,jdbcType=INTEGER},
+      <if test="record.taskId != null">
+        task_id = #{record.taskId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.taskAllStep != null">
+        task_all_step = #{record.taskAllStep,jdbcType=INTEGER},
       </if>
       <if test="record.taskCreateTime != null">
         task_create_time = #{record.taskCreateTime,jdbcType=DATE},
@@ -216,14 +242,11 @@
       <if test="record.taskFinishTime != null">
         task_finish_time = #{record.taskFinishTime,jdbcType=DATE},
       </if>
-      <if test="record.taskEventFlag != null">
-        task_event_flag = #{record.taskEventFlag,jdbcType=INTEGER},
+      <if test="record.taskEventId != null">
+        task_event_id = #{record.taskEventId,jdbcType=INTEGER},
       </if>
-      <if test="record.taskOperateMark != null">
-        task_operate_mark = #{record.taskOperateMark,jdbcType=INTEGER},
-      </if>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=INTEGER},
+      <if test="record.taskOperateFlowId != null">
+        task_operate_flow_id = #{record.taskOperateFlowId,jdbcType=INTEGER},
       </if>
       <if test="record.taskDetail != null">
         task_detail = #{record.taskDetail,jdbcType=LONGVARCHAR},
@@ -235,14 +258,15 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update task_service_table
-    set task_id = #{record.taskId,jdbcType=INTEGER},
-      task_step = #{record.taskStep,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
+      task_id = #{record.taskId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      task_all_step = #{record.taskAllStep,jdbcType=INTEGER},
       task_create_time = #{record.taskCreateTime,jdbcType=DATE},
       task_update_time = #{record.taskUpdateTime,jdbcType=DATE},
       task_finish_time = #{record.taskFinishTime,jdbcType=DATE},
-      task_event_flag = #{record.taskEventFlag,jdbcType=INTEGER},
-      task_operate_mark = #{record.taskOperateMark,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
+      task_event_id = #{record.taskEventId,jdbcType=INTEGER},
+      task_operate_flow_id = #{record.taskOperateFlowId,jdbcType=INTEGER},
       task_detail = #{record.taskDetail,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -250,16 +274,75 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update task_service_table
-    set task_id = #{record.taskId,jdbcType=INTEGER},
-      task_step = #{record.taskStep,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
+      task_id = #{record.taskId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      task_all_step = #{record.taskAllStep,jdbcType=INTEGER},
       task_create_time = #{record.taskCreateTime,jdbcType=DATE},
       task_update_time = #{record.taskUpdateTime,jdbcType=DATE},
       task_finish_time = #{record.taskFinishTime,jdbcType=DATE},
-      task_event_flag = #{record.taskEventFlag,jdbcType=INTEGER},
-      task_operate_mark = #{record.taskOperateMark,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER}
+      task_event_id = #{record.taskEventId,jdbcType=INTEGER},
+      task_operate_flow_id = #{record.taskOperateFlowId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nh.workflow.workflowsupport.dao.bean.TaskService">
+    update task_service_table
+    <set>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="taskAllStep != null">
+        task_all_step = #{taskAllStep,jdbcType=INTEGER},
+      </if>
+      <if test="taskCreateTime != null">
+        task_create_time = #{taskCreateTime,jdbcType=DATE},
+      </if>
+      <if test="taskUpdateTime != null">
+        task_update_time = #{taskUpdateTime,jdbcType=DATE},
+      </if>
+      <if test="taskFinishTime != null">
+        task_finish_time = #{taskFinishTime,jdbcType=DATE},
+      </if>
+      <if test="taskEventId != null">
+        task_event_id = #{taskEventId,jdbcType=INTEGER},
+      </if>
+      <if test="taskOperateFlowId != null">
+        task_operate_flow_id = #{taskOperateFlowId,jdbcType=INTEGER},
+      </if>
+      <if test="taskDetail != null">
+        task_detail = #{taskDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.nh.workflow.workflowsupport.dao.bean.TaskService">
+    update task_service_table
+    set task_id = #{taskId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      task_all_step = #{taskAllStep,jdbcType=INTEGER},
+      task_create_time = #{taskCreateTime,jdbcType=DATE},
+      task_update_time = #{taskUpdateTime,jdbcType=DATE},
+      task_finish_time = #{taskFinishTime,jdbcType=DATE},
+      task_event_id = #{taskEventId,jdbcType=INTEGER},
+      task_operate_flow_id = #{taskOperateFlowId,jdbcType=INTEGER},
+      task_detail = #{taskDetail,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nh.workflow.workflowsupport.dao.bean.TaskService">
+    update task_service_table
+    set task_id = #{taskId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      task_all_step = #{taskAllStep,jdbcType=INTEGER},
+      task_create_time = #{taskCreateTime,jdbcType=DATE},
+      task_update_time = #{taskUpdateTime,jdbcType=DATE},
+      task_finish_time = #{taskFinishTime,jdbcType=DATE},
+      task_event_id = #{taskEventId,jdbcType=INTEGER},
+      task_operate_flow_id = #{taskOperateFlowId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

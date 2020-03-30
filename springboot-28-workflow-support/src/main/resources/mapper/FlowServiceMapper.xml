@@ -3,9 +3,9 @@
 <mapper namespace="com.nh.workflow.workflowsupport.dao.mapper.FlowServiceMapper">
   <resultMap id="BaseResultMap" type="com.nh.workflow.workflowsupport.dao.bean.FlowService">
     <constructor>
-      <arg column="flow_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <idArg column="flow_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="flow_all_event_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="UPDATED_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="flow_describe" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    flow_id, flow_all_event_number, UPDATED_TIME
+    flow_id, flow_all_event_number, flow_describe
   </sql>
   <select id="selectByExample" parameterType="com.nh.workflow.workflowsupport.dao.bean.FlowServiceExample" resultMap="BaseResultMap">
     select
@@ -83,10 +83,20 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from flow_service_table
+    where flow_id = #{flowId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from flow_service_table
+    where flow_id = #{flowId,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.nh.workflow.workflowsupport.dao.bean.FlowService">
-    insert into flow_service_table (flow_id, flow_all_event_number, UPDATED_TIME
+    insert into flow_service_table (flow_id, flow_all_event_number, flow_describe
       )
-    values (#{flowId,jdbcType=INTEGER}, #{flowAllEventNumber,jdbcType=INTEGER}, #{updatedTime,jdbcType=TIMESTAMP}
+    values (#{flowId,jdbcType=INTEGER}, #{flowAllEventNumber,jdbcType=INTEGER}, #{flowDescribe,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.nh.workflow.workflowsupport.dao.bean.FlowService">
@@ -98,8 +108,8 @@
       <if test="flowAllEventNumber != null">
         flow_all_event_number,
       </if>
-      <if test="updatedTime != null">
-        UPDATED_TIME,
+      <if test="flowDescribe != null">
+        flow_describe,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -109,8 +119,8 @@
       <if test="flowAllEventNumber != null">
         #{flowAllEventNumber,jdbcType=INTEGER},
       </if>
-      <if test="updatedTime != null">
-        #{updatedTime,jdbcType=TIMESTAMP},
+      <if test="flowDescribe != null">
+        #{flowDescribe,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -129,8 +139,8 @@
       <if test="record.flowAllEventNumber != null">
         flow_all_event_number = #{record.flowAllEventNumber,jdbcType=INTEGER},
       </if>
-      <if test="record.updatedTime != null">
-        UPDATED_TIME = #{record.updatedTime,jdbcType=TIMESTAMP},
+      <if test="record.flowDescribe != null">
+        flow_describe = #{record.flowDescribe,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -141,9 +151,27 @@
     update flow_service_table
     set flow_id = #{record.flowId,jdbcType=INTEGER},
       flow_all_event_number = #{record.flowAllEventNumber,jdbcType=INTEGER},
-      UPDATED_TIME = #{record.updatedTime,jdbcType=TIMESTAMP}
+      flow_describe = #{record.flowDescribe,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nh.workflow.workflowsupport.dao.bean.FlowService">
+    update flow_service_table
+    <set>
+      <if test="flowAllEventNumber != null">
+        flow_all_event_number = #{flowAllEventNumber,jdbcType=INTEGER},
+      </if>
+      <if test="flowDescribe != null">
+        flow_describe = #{flowDescribe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where flow_id = #{flowId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nh.workflow.workflowsupport.dao.bean.FlowService">
+    update flow_service_table
+    set flow_all_event_number = #{flowAllEventNumber,jdbcType=INTEGER},
+      flow_describe = #{flowDescribe,jdbcType=VARCHAR}
+    where flow_id = #{flowId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,7 +1,6 @@
 package com.nh.workflow.workflowsupport.dao.bean;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class FlowServiceExample {
@@ -225,63 +224,73 @@ public class FlowServiceExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeIsNull() {
-            addCriterion("UPDATED_TIME is null");
+        public Criteria andFlowDescribeIsNull() {
+            addCriterion("flow_describe is null");
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeIsNotNull() {
-            addCriterion("UPDATED_TIME is not null");
+        public Criteria andFlowDescribeIsNotNull() {
+            addCriterion("flow_describe is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeEqualTo(Date value) {
-            addCriterion("UPDATED_TIME =", value, "updatedTime");
+        public Criteria andFlowDescribeEqualTo(String value) {
+            addCriterion("flow_describe =", value, "flowDescribe");
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeNotEqualTo(Date value) {
-            addCriterion("UPDATED_TIME <>", value, "updatedTime");
+        public Criteria andFlowDescribeNotEqualTo(String value) {
+            addCriterion("flow_describe <>", value, "flowDescribe");
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeGreaterThan(Date value) {
-            addCriterion("UPDATED_TIME >", value, "updatedTime");
+        public Criteria andFlowDescribeGreaterThan(String value) {
+            addCriterion("flow_describe >", value, "flowDescribe");
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("UPDATED_TIME >=", value, "updatedTime");
+        public Criteria andFlowDescribeGreaterThanOrEqualTo(String value) {
+            addCriterion("flow_describe >=", value, "flowDescribe");
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeLessThan(Date value) {
-            addCriterion("UPDATED_TIME <", value, "updatedTime");
+        public Criteria andFlowDescribeLessThan(String value) {
+            addCriterion("flow_describe <", value, "flowDescribe");
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeLessThanOrEqualTo(Date value) {
-            addCriterion("UPDATED_TIME <=", value, "updatedTime");
+        public Criteria andFlowDescribeLessThanOrEqualTo(String value) {
+            addCriterion("flow_describe <=", value, "flowDescribe");
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeIn(List<Date> values) {
-            addCriterion("UPDATED_TIME in", values, "updatedTime");
+        public Criteria andFlowDescribeLike(String value) {
+            addCriterion("flow_describe like", value, "flowDescribe");
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeNotIn(List<Date> values) {
-            addCriterion("UPDATED_TIME not in", values, "updatedTime");
+        public Criteria andFlowDescribeNotLike(String value) {
+            addCriterion("flow_describe not like", value, "flowDescribe");
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeBetween(Date value1, Date value2) {
-            addCriterion("UPDATED_TIME between", value1, value2, "updatedTime");
+        public Criteria andFlowDescribeIn(List<String> values) {
+            addCriterion("flow_describe in", values, "flowDescribe");
             return (Criteria) this;
         }
 
-        public Criteria andUpdatedTimeNotBetween(Date value1, Date value2) {
-            addCriterion("UPDATED_TIME not between", value1, value2, "updatedTime");
+        public Criteria andFlowDescribeNotIn(List<String> values) {
+            addCriterion("flow_describe not in", values, "flowDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlowDescribeBetween(String value1, String value2) {
+            addCriterion("flow_describe between", value1, value2, "flowDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlowDescribeNotBetween(String value1, String value2) {
+            addCriterion("flow_describe not between", value1, value2, "flowDescribe");
             return (Criteria) this;
         }
     }

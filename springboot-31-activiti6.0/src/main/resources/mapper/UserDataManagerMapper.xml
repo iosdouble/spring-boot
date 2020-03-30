@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nihui.activiti.dao.mybatis.MyUserDataManagerMapper">
-
-    <select id="findById" parameterType="java.lang.String" resultType="com.nihui.activiti.bean.ExtUser">
-        select * from ACT_ID_USER where ID_ = #{entityId}
-    </select>
-</mapper>

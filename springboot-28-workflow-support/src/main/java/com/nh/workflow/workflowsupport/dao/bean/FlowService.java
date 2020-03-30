@@ -1,18 +1,16 @@
 package com.nh.workflow.workflowsupport.dao.bean;
 
-import java.util.Date;
-
 public class FlowService {
     private Integer flowId;
 
     private Integer flowAllEventNumber;
 
-    private Date updatedTime;
+    private String flowDescribe;
 
-    public FlowService(Integer flowId, Integer flowAllEventNumber, Date updatedTime) {
+    public FlowService(Integer flowId, Integer flowAllEventNumber, String flowDescribe) {
         this.flowId = flowId;
         this.flowAllEventNumber = flowAllEventNumber;
-        this.updatedTime = updatedTime;
+        this.flowDescribe = flowDescribe;
     }
 
     public FlowService() {
@@ -35,11 +33,11 @@ public class FlowService {
         this.flowAllEventNumber = flowAllEventNumber;
     }
 
-    public Date getUpdatedTime() {
-        return updatedTime;
+    public String getFlowDescribe() {
+        return flowDescribe;
     }
 
-    public void setUpdatedTime(Date updatedTime) {
-        this.updatedTime = updatedTime;
+    public void setFlowDescribe(String flowDescribe) {
+        this.flowDescribe = flowDescribe == null ? null : flowDescribe.trim();
     }
 }
